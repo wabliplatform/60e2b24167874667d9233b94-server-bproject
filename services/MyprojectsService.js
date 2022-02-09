@@ -50,7 +50,8 @@ const deletemyprojects = ({ myprojectsId }) => new Promise(
 const getAllmyprojects = () => new Promise(
   async (resolve, reject) => {
     try {
-      query = await Myprojects.find().exec();
+      let query = {}
+      query = await Myprojects.find().populate(['pimage']).exec();
       resolve(Service.successResponse(query));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -70,7 +71,8 @@ const getmyprojects = ({ myprojectsId }) => new Promise(
   async (resolve, reject) => {
     try {
       let query = {};
-      query = await Myprojects.findById(myprojectsId).exec();
+      query = await Myprojects.findById(myprojectsId)
+      .populate(['pimage']).exec();
       resolve(Service.successResponse({ query,}));
     } catch (e) {
       reject(Service.rejectResponse(

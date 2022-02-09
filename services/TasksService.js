@@ -50,6 +50,7 @@ const deletetasks = ({ tasksId }) => new Promise(
 const getAlltasks = () => new Promise(
   async (resolve, reject) => {
     try {
+      let query = {}
       query = await Tasks.find().exec();
       resolve(Service.successResponse(query));
     } catch (e) {
@@ -70,7 +71,8 @@ const gettasks = ({ tasksId }) => new Promise(
   async (resolve, reject) => {
     try {
       let query = {};
-      query = await Tasks.findById(tasksId).exec();
+      query = await Tasks.findById(tasksId)
+      .exec();
       resolve(Service.successResponse({ query,}));
     } catch (e) {
       reject(Service.rejectResponse(
