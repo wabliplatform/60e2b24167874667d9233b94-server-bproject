@@ -51,7 +51,7 @@ const getAllmyprojects = () => new Promise(
   async (resolve, reject) => {
     try {
       let query = {}
-      query = await Myprojects.find().populate(['pimage']).exec();
+      query = await Myprojects.find().exec();
       resolve(Service.successResponse(query));
     } catch (e) {
       reject(Service.rejectResponse(
@@ -72,7 +72,7 @@ const getmyprojects = ({ myprojectsId }) => new Promise(
     try {
       let query = {};
       query = await Myprojects.findById(myprojectsId)
-      .populate(['pimage']).exec();
+      .exec();
       resolve(Service.successResponse({ query,}));
     } catch (e) {
       reject(Service.rejectResponse(

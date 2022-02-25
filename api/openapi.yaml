@@ -326,3 +326,4 @@ components:
         name:
           type: string
       type: object
+      x-isSchemaOnly: "true"
